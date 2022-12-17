@@ -5,43 +5,38 @@ import Form from "./components/Form";
 import Team from "./components/Team";
 
 function App() {
-  const teams = [
+  /* O "useState" retorna dois valores, por isso que o retorno desse useState é inserido dentro de um array. O primeiro valor corresponde a um estado, e o segundo valor é uma função que realiza a alteração desse estado. */
+
+  const [teams, setTeams] = useState([
     {
       nome: "Programação",
-      primaryColor: "#57C278",
-      secondaryColor: "#D9F7E9",
+      color: "#D9F7E9",
     },
     {
       nome: "Front-End",
-      primaryColor: "#82CFFA",
-      secondaryColor: "#E8F8FF",
+      color: "#E8F8FF",
     },
     {
       nome: "Data Science",
-      primaryColor: "#A6D157",
-      secondaryColor: "#F0F8E2",
+      color: "#F0F8E2",
     },
     {
       nome: "DevOps",
-      primaryColor: "#ED6B69",
-      secondaryColor: "#FDE7E8",
+      color: "#FDE7E8",
     },
     {
       nome: "UX e Design",
-      primaryColor: "#DB6EBF",
-      secondaryColor: "#FAE9F5",
+      color: "#FAE9F5",
     },
     {
       nome: "Mobile",
-      primaryColor: "#FFBA05",
-      secondaryColor: "#FFF5D9",
+      color: "#FFF5D9",
     },
     {
       nome: "Inovação e Gestão",
-      primaryColor: "#FF8A29",
-      secondaryColor: "#FFEEDF",
+      color: "#FFEEDF",
     },
-  ];
+  ]);
 
   const [collaborators, setCollaborators] = useState([]);
 
@@ -51,6 +46,22 @@ function App() {
     console.log(collaborator);
     /* Estou espalhando os colaboradores antigos e adicionando o novo colaborador, que acabou de ser criado, ao final do array. */
     setCollaborators([...collaborators, collaborator]);
+  };
+
+  const changeTeamColor = (color, name) => {
+    console.log(color, name);
+    setTeams(
+      teams.map((team) => {
+        if (team.nome === name) {
+          team.color = color;
+        }
+        return team;
+      })
+    );
+  };
+
+  const deleteCard = () => {
+    console.log("Deletando Colaborador");
   };
 
   return (
@@ -70,11 +81,12 @@ function App() {
           <Team
             key={team.nome}
             nome={team.nome}
-            primaryColor={team.primaryColor}
-            secondaryColor={team.secondaryColor}
+            color={team.color}
             collaborators={collaborators.filter(
               (collaborator) => collaborator.time === team.nome
             )}
+            handleDelete={deleteCard}
+            changeColor={changeTeamColor}
           ></Team>
         );
       })}

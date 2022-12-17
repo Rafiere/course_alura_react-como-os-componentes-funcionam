@@ -7,8 +7,10 @@ import "./style.css";
 
 /* Por padrão, o React entrega o parâmetro "props". Esse parâmetro contém as propriedades que o componente "TextField" recebeu. */
 
-const TextField = (props) => {
-  const changedPlaceholder = `${props.placeholder}...`;
+/* Abaixo, estamos desestruturando essas props. */
+
+const TextField = ({ label, placeholder, required, value, onChangeText }) => {
+  const changedPlaceholder = `${placeholder}...`;
 
   /* O "useState" é uma forma de mantermos um estado dentro de uma função. Por padrão, uma função não teria um estado. */
 
@@ -20,21 +22,21 @@ const TextField = (props) => {
 
   /* A cada vez que o valor de "inputValue" é alterado, isso significa que o estado foi alterado, dessa forma, o React sabe que ele tem que renderizar o componente novamente. */
 
-  const [inputValue, setInputValue] = useState("");
+  // const [inputValue, setInputValue] = useState("");
 
   /* A cada tecla digitada, alteraremos o valor final do input. */
   const onType = (event) => {
-    props.onChangeText(event.target.value);
+    onChangeText(event.target.value);
   };
 
   return (
     <div className="text-field">
-      <label>{props.label}</label>
+      <label>{label}</label>
       <input
         onChange={onType}
-        required={props.required}
+        required={required}
         placeholder={changedPlaceholder}
-        value={props.value}
+        value={value}
       />
     </div>
   );
