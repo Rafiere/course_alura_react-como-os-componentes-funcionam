@@ -41,3 +41,11 @@ O React enxerga um componente como se ele fosse uma peça de lego. Todos os comp
 ---
 
 Assim que realizamos uma mudança de estado, através do "onChange()", por exemplo, o React faz uma diferença de como o navegador estaria antes da mudança para como o navegador estaria após a mudança. Através da diferença entre como o navegador está e como o navegador deveria estar, ele realiza a renderização apenas das coisas que precisam ser alteradas no React.
+
+---
+
+O Angular e alguns outros frameworks utilizam o two way data binding. Ele permite que o pai envie informações para o filho e que o filho envie informações para o pai. O React é "one way data binding", assim, ele consegue enviar propriedades apenas do pai para o filho.
+
+O React funciona assim pois ele espera que as coisas mudem, para que ele possa reverberar essas informações para baixo. Se ele permitisse mudanças de baixo para cima, todas as vezes que algo mudasse no código, ele precisaria verificar o VirtualDOM e a sua árvore para verificar se existe alguma alteração, e isso geraria um problema de performance.
+
+Por ser "two way data binding", sempre que realizamos uma alteração, o React sabe que precisa verificar apenas no próprio componente e nos filhos de seu componente, e não na árvore inteira.
