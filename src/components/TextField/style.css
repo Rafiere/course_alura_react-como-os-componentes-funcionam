@@ -1,0 +1,24 @@
+.text-field {
+  margin: 24px 0;
+}
+
+.text-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+
+.text-field input {
+  background-color: #fff;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
+
+  /* O "width: 100%" significa que o tamanho desse componente será definido pelo elemento em que ele estiver inserido, assim, se diminuirmos o tamanho desse elemento-pai, o tamanho desse componente também será diminuído. */
+  width: 100%;
+
+  border: none;
+  font-size: 24px;
+  padding: 24px;
+
+  /* O "input" estará vazando pois o "padding" não está sendo considerado dentro do "width". Para evitarmos isso, devemos colocar o valor "border-box", assim, o tamanho desse componente englobará o padding, o margin e etc. */
+  box-sizing: border-box;
+}

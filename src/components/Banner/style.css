@@ -1,0 +1,9 @@
+.banner {
+  background-color: #6278f7;
+  text-align: center;
+}
+
+.banner img {
+  /* Estamos tornando a imagem responsiva, assim, ela nunca crescerá mais do que 100% do tamanho do container em que ela está inserida. */
+  max-width: 100%;
+}
