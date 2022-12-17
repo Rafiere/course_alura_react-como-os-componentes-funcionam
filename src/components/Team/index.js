@@ -4,20 +4,27 @@ import hexToRgba from "hex-to-rgba";
 
 /* Esse componente não possui nenhum comportamento. Ele apenas recebe as "props" e exibe elas na tela. Esses componentes são chamados de "dumb components". Eles são mais fáceis de testar e de dar manutenção, pois a lógica de negócios está extraída em outro lugar. */
 
-const Team = ({ collaborators, nome, color, handleDelete, changeColor }) => {
+const Team = ({
+  collaborators,
+  id,
+  nome,
+  color,
+  handleDelete,
+  changeColor,
+}) => {
   return (
     /* Se a expressão for "true", o JSX retornará o componente. Se for "false", o JSX não renderizará o componente. */
 
     collaborators.length > 0 && (
       <section
         className="time"
-        style={{ backgroundColor: hexToRgba(color, "0,6") }}
+        style={{ backgroundColor: hexToRgba(color, 0.6) }}
       >
         <input
           type="color"
           className="input-cor"
-          value={hexToRgba(color, "0,6")}
-          onChange={(event) => changeColor(event.target.value, nome)}
+          value={hexToRgba(color, 0.6)}
+          onChange={(event) => changeColor(event.target.value, id)}
         />
         <h3 style={{ borderColor: color }}>{nome}</h3>
         <div className="cards">

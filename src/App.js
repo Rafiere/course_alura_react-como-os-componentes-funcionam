@@ -3,36 +3,44 @@ import Banner from "./components/Banner";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Team from "./components/Team";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   /* O "useState" retorna dois valores, por isso que o retorno desse useState é inserido dentro de um array. O primeiro valor corresponde a um estado, e o segundo valor é uma função que realiza a alteração desse estado. */
 
   const [teams, setTeams] = useState([
     {
+      id: uuidv4(),
       nome: "Programação",
       color: "#D9F7E9",
     },
     {
+      id: uuidv4(),
       nome: "Front-End",
       color: "#E8F8FF",
     },
     {
+      id: uuidv4(),
       nome: "Data Science",
       color: "#F0F8E2",
     },
     {
+      id: uuidv4(),
       nome: "DevOps",
       color: "#FDE7E8",
     },
     {
+      id: uuidv4(),
       nome: "UX e Design",
       color: "#FAE9F5",
     },
     {
+      id: uuidv4(),
       nome: "Mobile",
       color: "#FFF5D9",
     },
     {
+      id: uuidv4(),
       nome: "Inovação e Gestão",
       color: "#FFEEDF",
     },
@@ -48,11 +56,12 @@ function App() {
     setCollaborators([...collaborators, collaborator]);
   };
 
-  const changeTeamColor = (color, name) => {
-    console.log(color, name);
+  const changeTeamColor = (color, id) => {
     setTeams(
       teams.map((team) => {
-        if (team.nome === name) {
+        console.log(color, id, team.id);
+
+        if (team.id === id) {
           team.color = color;
         }
         return team;
@@ -80,6 +89,7 @@ function App() {
         return (
           <Team
             key={team.nome}
+            id={team.id}
             nome={team.nome}
             color={team.color}
             collaborators={collaborators.filter(
