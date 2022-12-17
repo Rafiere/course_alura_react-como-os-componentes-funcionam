@@ -9,7 +9,14 @@ import "./style.css";
 
 /* Abaixo, estamos desestruturando essas props. */
 
-const TextField = ({ label, placeholder, required, value, onChangeText }) => {
+const TextField = ({
+  type = "text",
+  label,
+  placeholder,
+  required,
+  value,
+  onChangeText,
+}) => {
   const changedPlaceholder = `${placeholder}...`;
 
   /* O "useState" é uma forma de mantermos um estado dentro de uma função. Por padrão, uma função não teria um estado. */
@@ -30,9 +37,10 @@ const TextField = ({ label, placeholder, required, value, onChangeText }) => {
   };
 
   return (
-    <div className="text-field">
+    <div className={`text-field ${type}-field`}>
       <label>{label}</label>
       <input
+        type={type}
         onChange={onType}
         required={required}
         placeholder={changedPlaceholder}

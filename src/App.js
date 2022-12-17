@@ -69,8 +69,31 @@ function App() {
     );
   };
 
-  const deleteCard = () => {
-    console.log("Deletando Colaborador");
+  const deleteCard = (id) => {
+    setCollaborators(
+      collaborators.filter((collaborator) => collaborator.id !== id)
+    );
+  };
+
+  const handleRegisterTeam = (teamName, teamColor) => {
+    console.log(teamName, teamColor);
+    const newTeam = {
+      id: uuidv4(),
+      nome: teamName,
+      color: teamColor,
+    };
+    setTeams([...teams, newTeam]);
+  };
+
+  const handleFavoritar = (id) => {
+    setCollaborators(
+      collaborators.map((collaborator) => {
+        if (collaborator.id === id) {
+          collaborator.favorito = !collaborator.favorito;
+          return collaborator;
+        }
+      })
+    );
   };
 
   return (
@@ -83,6 +106,7 @@ function App() {
           onRegisterCollaborator(collaborator)
         }
         teams={teams.map((team) => team.nome)}
+        registerTeam={handleRegisterTeam}
       />
       {teams.map((team) => {
         /* O "key" serve para controlar quando um filho deve ser renderizado ou não. Se tivermos vários filhos e atualizarmos apenas um, é através da "key" que o React saberá se deve atualizar um filho ou não. */
@@ -97,6 +121,7 @@ function App() {
             )}
             handleDelete={deleteCard}
             changeColor={changeTeamColor}
+            aoFavoritar={handleFavoritar}
           ></Team>
         );
       })}

@@ -22,3 +22,9 @@
   /* O "input" estará vazando pois o "padding" não está sendo considerado dentro do "width". Para evitarmos isso, devemos colocar o valor "border-box", assim, o tamanho desse componente englobará o padding, o margin e etc. */
   box-sizing: border-box;
 }
+
+.color-field input {
+  height: 40px;
+  padding: 5px 24px;
+  cursor: pointer;
+}

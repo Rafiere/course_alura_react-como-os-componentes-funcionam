@@ -11,6 +11,7 @@ const Team = ({
   color,
   handleDelete,
   changeColor,
+  aoFavoritar,
 }) => {
   return (
     /* Se a expressão for "true", o JSX retornará o componente. Se for "false", o JSX não renderizará o componente. */
@@ -28,19 +29,22 @@ const Team = ({
         />
         <h3 style={{ borderColor: color }}>{nome}</h3>
         <div className="cards">
-          {collaborators.map((collaborator) => {
+          {collaborators.map((collaborator, index) => {
             console.log("Renderizando Colaborador");
 
             /* O React enxerga um componente como se ele fosse um objeto. */
 
             return (
               <Card
-                key={collaborator.nome}
+                key={index}
                 nome={collaborator.nome}
                 cargo={collaborator.cargo}
                 imagem={collaborator.imagem}
                 primaryColor={color}
+                id={collaborator.id}
                 handleDelete={handleDelete}
+                favorito={collaborator.favorito}
+                aoFavoritar={aoFavoritar}
               />
             );
           })}
