@@ -1,4 +1,4 @@
-#Anotações:
+Anotações:
 
 npx: Esse comando, normalmente, é utilizado para rodarmos comandos de forma remota.
 
@@ -17,4 +17,3 @@ Com o React, podemos montar layouts, sites, e deixar a interação com o usuári
 Com o JS Vanilla, até conseguiriamos fazer isso, porém, teríamos que nos preocupar com os momentos para atualizarmos o DOM.
 
 No Facebook, por exemplo, temos uma página com muitas coisas acontecendo ao mesmo tempo, sem precisarmos recarregar a página para visualizarmos as alterações. Esse é propósito de uma SPA (Single Page Application).
-# course_alura_react-como-os-componentes-funcionam
